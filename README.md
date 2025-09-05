@@ -241,4 +241,99 @@ graph TD
 | Resistência a interferência | Cabo Coaxial       | Blindagem eficiente               |
 | Upgrades futuros          | Fibra Óptica          | Escalabilidade sem troca de cabos |
 
+### 🌐 Equipamentos da Camada de Enlace (Ethernet)
+
+---
+
+#### 📜 Histórico do Ethernet
+- **1973** → Criado por Robert Metcalfe (Xerox PARC)  
+- **1976** → Primeiro artigo publicado  
+- **1980** → Padrão DIX (Digital, Intel, Xerox)  
+- **1983** → Padronização **IEEE 802.3**  
+- Ethernet tornou-se o **padrão global para redes locais (LANs)**  
+
+---
+
+#### ⚙️ Funcionamento Básico
+- Atua na **Camada 2 do Modelo OSI**  
+- Identificação por **endereços MAC**  
+- Tipos de transmissão:  
+  - **Half-duplex** → um de cada vez  
+  - **Full-duplex** → transmissão bidirecional simultânea  
+
+---
+
+#### 🔄 CSMA/CD (Protocolo de Acesso ao Meio)
+- **Carrier Sense** → verifica se o meio está livre  
+- **Multiple Access** → vários dispositivos compartilham o meio  
+- **Collision Detection** → detecta colisões e retransmite  
+
+> 🚫 Em redes modernas não é mais necessário, pois os **switches** eliminam colisões.
+
+---
+
+#### 📦 Hub x Switch
+
+| Característica       | Hub (Legado) ⚠️ | Switch (Atual) ✅ |
+|----------------------|----------------|------------------|
+| **Camada OSI**       | Física (1)     | Enlace (2)       |
+| **Transmissão**      | Replica para todas as portas | Encaminha apenas ao destino |
+| **Colisões**         | Frequentes     | Eliminadas       |
+| **Desempenho**       | Baixo (meio compartilhado) | Alto (porta dedicada) |
+| **Inteligência**     | Nenhuma        | Tabela MAC para decisão |
+
+---
+
+#### 📊 Funcionamento
+
+##### 🔹 Hub
+```mermaid
+flowchart LR
+    PC1[PC1] --> HUB((Hub))
+    PC2[PC2] --> HUB
+    PC3[PC3] --> HUB
+    PC4[PC4] --> HUB
+    HUB --> PC1
+    HUB --> PC2
+    HUB --> PC3
+    HUB --> PC4
+```
+➡ Envia para **todas** as portas → gera colisões.
+##### 🔹 Switch
+```mermaid
+flowchart LR
+    PC1[PC1] --> SW((Switch))
+    SW --> PC2[PC2]
+    SW --> PC3[PC3]
+```
+➡ Encaminha o quadro **apenas para o destino correto**.
+
+---
+
+#### 🧰 Modos de Operação dos Switches
+- **Flooding** → envia para todas as portas quando não conhece o destino  
+- **Forwarding** → envia apenas para a porta correta  
+- **Blocking** → descarta pacotes não permitidos  
+- **Aging** → remove entradas antigas da tabela MAC  
+
+---
+
+#### 🚀 Evolução das Velocidades Ethernet
+| Padrão       | Velocidade | Cabo                     |
+|--------------|------------|--------------------------|
+| **10BASE-T** | 10 Mbps    | Par trançado Cat 3       |
+| **100BASE-TX** | 100 Mbps | Par trançado Cat 5       |
+| **1000BASE-T** | 1 Gbps   | Par trançado Cat 5e ou + |
+| **10GBASE-T** | 10 Gbps   | Par trançado Cat 6a ou + |
+
+---
+
+#### ✅ Vantagens do Ethernet
+- Fácil implementação e configuração  
+- Topologias flexíveis  
+- Custo acessível  
+- Evolução contínua para **altas velocidades**  
+
+---
+
 

@@ -241,6 +241,8 @@ graph TD
 | Resistência a interferência | Cabo Coaxial       | Blindagem eficiente               |
 | Upgrades futuros          | Fibra Óptica          | Escalabilidade sem troca de cabos |
 
+## Aula 03
+
 ### 🌐 Equipamentos da Camada de Enlace (Ethernet)
 
 ---

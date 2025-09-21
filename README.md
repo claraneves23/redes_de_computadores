@@ -338,4 +338,171 @@ flowchart LR
 
 ---
 
+## Aula 04
+
+### Protocolos IP e ARP
+
+#### Protocolo IP
+- É um dos principais pilares do conjunto de protocolos TCP/IP que forma a base da comunicação na internet e em redes locais.
+- O **IPv4** é responsável por endereçar dispositivos em uma rede, permitindo que dados sejam enviados e recebidos entre eles, permitiu a expansão massiva da internet, criando um sistema estruturado de endereçamento que facilitou o crescimento das redes de computadores. A principal função do IPv4 é fornecer endereços únicos a cada dispositivo conectado à rede, permitindo que a comunicação ocorra de forma organizada e eficiente.
+
+
+#### Modelo TCP/IP
+```mermaid
+graph TD
+    subgraph "Modelo TCP/IP"
+        A[Camada de Aplicação<br/>HTTP, HTTPS, FTP, SSH, DNS, DHCP]
+        T[Camada de Transporte<br/>TCP, UDP]
+        R[Camada de Rede<br/>IP, ICMP, ARP]
+        N[Camada de Acesso à Rede<br/>Ethernet, Wi-Fi, PPP, MAC]
+    end
+    
+    A -->|Dados| T
+    T -->|Segmentos| R
+    R -->|Pacotes| N
+    N -->|Quadros| Meio[Meio Físico]
+    
+    Meio --> N
+    N --> R
+    R --> T
+    T --> A
+    
+    style A fill:#e1f5fe
+    style T fill:#fff3e0
+    style R fill:#f3e5f5
+    style N fill:#e8f5e8
+```
+#### Encapsulamento
+
+**Camada de Aplicação:**
+
+- Os dados originais (mensagem) são criados pelo aplicativo
+
+- Exemplo: requisição HTTP, email, etc.
+
+**Camada de Transporte (TCP/UDP):**
+
+- Recebe os dados da aplicação
+
+- Adiciona um cabeçalho TCP ou UDP criando um segmento
+
+- O cabeçalho contém informações de porta, sequência, checksum
+
+**Camada de Rede (IP):**
+
+- Recebe o segmento TCP/UDP
+
+- Adiciona um cabeçalho IP criando um pacote ou datagrama
+
+- O cabeçalho IP contém endereços IP de origem e destino
+
+**Camada de Enlace de Dados (Ethernet):**
+
+- Recebe o pacote IP
+
+- Adiciona um cabeçalho e rodapé Ethernet criando um quadro
+
+- O cabeçalho contém endereços MAC físicos
+
+- Usa ARP para descobrir o endereço MAC do destinatário
+
+**Camada Física:**
+
+- Converte o quadro em sinais elétricos, ópticos ou electromagnéticos
+
+- Transmite os bits através do meio físico (cabos, wireless)
+
+#### Desencapsulamento:
+No destino, o processo ocorre inversamente - cada camada remove seu cabeçalho específico e encaminha os dados para a camada superior, até que a mensagem original seja entregue à aplicação.
+
+#### Estrutura do Pacote IP
+
+| Componente   | Tamanho    | Explicação                  |
+|--------------|------------|-----------------------------|
+| **Versão**   | 4 bits     | Indica a versão do protocolo|
+| **IHL - Internet Header Length** | 4 bits | Especifica o tamanho do cabeçalho em múltilos de 4 bytes |
+| **Type of Service (ToS)** | 8 bits   | Define a prioridade do pacote e a qualidade de serviço desejada, indicando, por exemplo, se o pacote deve ter baixa latência ou alta confiabilidade |
+| **Total Length** | 16 bits | Especifica o tamanho total do pacote, incluindo cabeçalho e dados, em bytes. O tamanho máximo é 65.535 bytes |
+| **Identification** | 16 bits | Usado para identificar fragmentos de um pacote. Se um pacote for fragmentos de um pacote. Se um pacote for fragmentado terão o mesmo valor de identificação |
+| **Flags** | 3 bits | Contém três bandeiras (flags) usadas para controlar a fragmentação. Os principais são: **DF (Don't Fragment)**: Indica que o pacote não deve ser fragmentado. **MF (More Fragments)** Indica que mais fragmentos se seguirão ao atual|
+| **Fragment Offset** | 13 bits | Especifica a posição de um fragmento em relação ao início do pacote original, permitindo a reconstrução correta dos dados|
+| **Time to Live (TLL)** | 8 bits | Define o número máximo de saltos (hops) que pacote pode realizar antes de ser descartado. A cada roteador atravessado, o valor é decrementado |
+| **Protocol** | 8 bits | Especifica o protocolo de camada superior (por exemplo, TCP, UDP) encapsulado no pacote IPv4 |
+| **Header Checksum** | 16 bits | Um valor usado para verificar a integridade do cabeçalho. Caso seja detectado um erro, o pacote é descartado |
+| **Source Address** | 32 bits | Contém o endereço IP de origem do pacote |
+| **Destination Address** | 32 bits | Contém o endereço IP de destino do pacote |
+| **Options** | Tamanho variável | Campo opcional usado para recursos adicionais com segurança, roteamento específico, entre outros |
+| **Padding** | Tamanho variável | Usado para garantir que o cabeçalho tenha um tamanho múltiplo de 32 bits|
+
+#### Endereçamento IP (w.x.y.z)
+
+| Classe de Endereçamento  | w | Net Id | Host Id | Nets | Hosts    |
+|--------------------------|-----|--------|---------|------|----------|
+| **A**                   | 1-126 | w    |   x.y.z | 126  | 16.77.214|
+| **B**                   | 128-191 | w.x |  y.z | 16.384  | 65.534  |
+| **C**                   | 192-223 | w.x.y | z | 2.097.151  | 154|
+
+*Endereço 127.x.x.x tem uso especial: loopback, localhost*
+
+#### Endereçamento IP: Classes
+- O IPv4 utiliza endereços de 32 bits, normalmente representandos em notação decimal com quatro octetos (ex.: 192.168.0.1). Os endereços IPv4 são divididos em classes, cada uma com um propósito específico.
+
+| Classe  | Função                          | Faixa                   |
+|---------|---------------------------------|-------------------------|
+| **A**   | Destinada a redes muito grandes | 1.0.0.0 a 126.255.255.255|
+| **B**   | Para redes de tamanho médio     | 128.0.0.0 a 191.255.255.255  |
+| **C**   | Para redes menores, como redes locais | 192.0.0.0 a 223.255.255.255|
+| **D**   | Usada para multicast| 224.0.0.0 a 239.255.255.255  |
+| **E**   | Reservada para uso futuro ou experimental | 240.0.0.0 a 225.255.255.255|
+
+#### Endereços Públicos x Privados
+- Endereços IP públicos: usados para identificar dispositivos acessíveis na internet global. Esses enderços são únicos e gerenciados por organizados como a IANA (Internet Assigned Numbers Authority) para garantir que não haja duplicidade.
+
+- Endereços IP privados: usados em redes internas e não são roteáveis na internet pública. As faixas reservadas para endereços privados são:
+- **Classe A:** 10.0.0.0 a 10.255.255.255
+- **Classe B:** 172.16.0.0 a 172.31.255.255
+- **Classe C:** 192.168.0.0 a 192.168.255.255
+
+- **APIPA (Automatic Private IP Addressing):** 169.254.0.0 a 169.254.255.255, usado quando um dispositivo não consegue obter um endereço IP dinâmico.
+
+#### Atribuição IP
+
+- **Estático:** O administrador da rede define manualmente o endereço IP de cada dispositivo, garantindo que este permaneça constante ao longo do tempo.
+  
+- **Dinâmico**: Um servidor DHCP (Dynamic Host Configuration Protocol) atribui automaticamente os endereços IP aos dispositivos quando estes se conectam à rede.
+
+#### DHCP - Funcionamento
+
+- DHCP: simplifica a gestão de endereços IP em uma rede, permitindo que dispositivos sejam configurados automaticamenre com um endereço IP, máscara de sub-rede, gateway padrão, e servidores DNS.
+
+##### Processo DORA
+O processo de atribução de um endereço IP pelo DHCP, possui quatro etapas:
+- **1. Discovery:** Quando um dispositivo (cliente) se conecta à rede, ele envia um pacote DHCPDISCOVER em broadcast para localizar servidores DHCP disponíveis.
+- **2. Offer:** Os servidores DHCP que recebem o pedido respondem com um pacote DHCPOFFER, oferecendo um endereço IP ao cliente, junto com outros parâmetros de rede.
+- **3.Request**: O cliente escolhe uma das ofertas recebidas e responde com um DHCPREQUEST, indicando que aceita o endereço IP oferecido.
+- **4. Acknowledge:** Finalmente, o servidor DHCP responde com um DHCPACK, confirmando que o cliente pode usar o endereço IP e fornecendo os parâmetros adicionais, como a duração do lease (tempo de validade do endereço).
+
+##### Pool de Endereços e Reservas por MAC
+
+- **Pool de Endereços**: O DHCP possui uma faixa de endereços IP configurada, conhecida como pool, que ele pode atribuir dinamicamente aos dispositivos. O pool define o intervalo de endereços disponíveis para is clientes.
+-  **Reservas por MAC**: Para dispositivos que precisam de um endereço IP fixo, mas sem configurar manualmente, o administrar pode configurar uma reserva por MAC address. Isso significa que sempre que o dispositivo com aquele MAC específico solicitar um IP, o servidor DHCP atribuirá o mesmo endereço IP pré-determinado.
+
+#### Protocolo ARP (Address Resolution Protocol)
+- O ARP é um protocolo de comunicação essencial utilizado dentro de redes locais para mapear endereços IP em endereços MAC(Media Acess Control). Em uma rede, dispositivos como computadores e roteadores usam endereços IP para identificar uns aos outros na camada de rede. No entanto, para que a comunicação ocorra fisicamente na rede, é necessário que esses endereços IP sejam convertidos em endereços MAC, que operam na camada de enlace. O ARP realiza esse conversão de maneira dinâmica e automática.
+
+#### Estrutura Pacote ARP
+
+```mermaid
+flowchart TD
+
+subgraph "Protocolo ARP (Pacote ARP)"
+    A0["Bytes 0–7 | Hardware Type (2 bytes) | Protocol Type (2 bytes) | Hardware Address Length (1 byte) | Protocol Address Length (1 byte) | Operation (2 bytes)"]
+
+    A1["Bytes 8–15 | Sender Hardware Address (6 bytes) | Sender Protocol Address (4 bytes)"]
+
+    A2["Bytes 16–23 | Target Hardware Address (6 bytes) | Target Protocol Address (4 bytes)"]
+
+end
+```
+
 

@@ -490,19 +490,23 @@ O processo de atribução de um endereço IP pelo DHCP, possui quatro etapas:
 #### Protocolo ARP (Address Resolution Protocol)
 - O ARP é um protocolo de comunicação essencial utilizado dentro de redes locais para mapear endereços IP em endereços MAC(Media Acess Control). Em uma rede, dispositivos como computadores e roteadores usam endereços IP para identificar uns aos outros na camada de rede. No entanto, para que a comunicação ocorra fisicamente na rede, é necessário que esses endereços IP sejam convertidos em endereços MAC, que operam na camada de enlace. O ARP realiza esse conversão de maneira dinâmica e automática.
 
-#### Estrutura Pacote ARP
+#### Estrutura do Pacote ARP
 
-```mermaid
-flowchart TD
+| Nº | Campo                        | Tamanho | Descrição                                                                 |
+|----|------------------------------|----------|----------------------------------------------------------------------------|
+| 1  | Hardware Type (HTYPE)        | 2 bytes | Tipo de hardware. Para Ethernet = `1`. Outros possíveis: ATM, Frame Relay. |
+| 2  | Protocol Type (PTYPE)        | 2 bytes | Protocolo de camada de rede. Para IPv4 = `0x0800`.                         |
+| 3  | Hardware Address Length (HLEN)| 1 byte  | Tamanho do endereço de hardware. Para Ethernet = `6` (bytes do MAC).       |
+| 4  | Protocol Address Length (PLEN)| 1 byte  | Tamanho do endereço de protocolo. Para IPv4 = `4`.                         |
+| 5  | Operation (OPER)             | 2 bytes | Tipo de operação: `1` = Request, `2` = Reply.                              |
+| 6  | Sender Hardware Address (SHA)| 6 bytes | Endereço MAC de origem. Ex: `00:1A:2B:3C:4D:5E`.                           |
+| 7  | Sender Protocol Address (SPA)| 4 bytes | Endereço IP de origem. Ex: `192.168.0.10`.                                 |
+| 8  | Target Hardware Address (THA)| 6 bytes | Endereço MAC de destino. No Request fica vazio. No Reply é preenchido.     |
+| 9  | Target Protocol Address (TPA)| 4 bytes | Endereço IP do destino. Ex: `192.168.0.20`.                                |
 
-subgraph "Protocolo ARP (Pacote ARP)"
-    A0["Bytes 0–7 | Hardware Type (2 bytes) | Protocol Type (2 bytes) | Hardware Address Length (1 byte) | Protocol Address Length (1 byte) | Operation (2 bytes)"]
+##### ARP - Funcionamento
 
-    A1["Bytes 8–15 | Sender Hardware Address (6 bytes) | Sender Protocol Address (4 bytes)"]
-
-    A2["Bytes 16–23 | Target Hardware Address (6 bytes) | Target Protocol Address (4 bytes)"]
-
-end
-```
-
+- **1. Solicitação ARP (ARP Request):** Quando um dispositivo deseja enviar em pacote a outro dispositivo em uma rede local, ele primeiro verifica se já conhece o endereço MAC correspondente ao endereço IP de destino. Caso não conheça, ele envia uma solicitaçãp ARP (broadcast) para todos dispositivos na rede, perguntando: "Quem tem o endereço IP X?"
+- **2. Resposta ARP (ARP Reply):** O dispositivo que possui o endereço IP correspondente responde com uma mensagem contendo o seu endereço MAC. Essa resposta é envidada diretamente ao solicitante.
+- **3. Cache ARP:** O dispositivo solicitante armazena a correspondência entre o endereço IP e o endereço MAC em uma tabela chamada chache ARP. Isso evita a necessida de enviar solicitações ARP repetidas para o mesmo endereço IP, acelerando as comunicações futuras.
 

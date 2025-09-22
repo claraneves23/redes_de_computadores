@@ -122,7 +122,7 @@ graph TD
 ### Cabo Par Trançado
 
 #### Estrutura
-- Pares de fios de cobre trançados entre si (reduz a interferência eletromagnética e o crosstalk entre os pares.
+- Pares de fios de cobre trançados entre si (reduz a interferência eletromagnética e o crosstalk entre os pares).
 
 #### Tipos
 - UTP (Unshield Twisted Pair): Não possui blindagem, sendo mais barato e mais fácil de instalar, porém menos protegido contra interferências.

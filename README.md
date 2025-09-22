@@ -4,9 +4,7 @@ Disciplina ministrada pelo professor Claudio Souza Nunes
 
 Lattes: http://lattes.cnpq.br/7682775885207598
 
-## Aula 01
-
-### Importância das Redes de Computadores
+## Aula 01 - Importância das Redes de Computadores
 
 - Comunição entre pessoas
 - Compartilhar recursos e troca de informações
@@ -75,9 +73,7 @@ graph TD
 | **Árvore** | Topologia hierárquica que combina características da estrela e do barramento com sub-redes organizadas em uma estrutura de árvore. | - Fácil de gerenciar e expandir<br>- Problemas em uma sub-rede não afetam o resto da rede | - Dependência dos nós superiores<br>- Pode ser difícil de configurar inicialmente |
 | **Híbrida** | Combinação de duas ou mais topologias diferentes, adaptando-se às necessidades específicas da rede. | - Flexível e escalável<br>- Pode otimizar as vantagens de diferentes topologias | - Pode ser complexa de configurar e gerenciar<br>- Custo pode variar dependendo das topologias usadas |
 
-## Aula 02
-
-### Meios físicos de Transmissão - Conectividade Elétrica e Ótica
+## Aula 02 - Meios físicos de Transmissão - Conectividade Elétrica e Ótica
 
 ### Definição
 - Constituem a base da camada física do modelo ISO/OSI, são responsável pela transmissão de sinais elétricos ou ópticos que transportam os dados brutos entre os dispositivos conectados à rede. A escolha do meio físico adequado influencia diretamente a qualidade da comunicação, a velocidade de transmissão e a confiabilidade da rede.
@@ -241,11 +237,7 @@ graph TD
 | Resistência a interferência | Cabo Coaxial       | Blindagem eficiente               |
 | Upgrades futuros          | Fibra Óptica          | Escalabilidade sem troca de cabos |
 
-## Aula 03
-
-### 🌐 Equipamentos da Camada de Enlace (Ethernet)
-
----
+## Aula 03 - Equipamentos da Camada de Enlace (Ethernet)
 
 #### 📜 Histórico do Ethernet
 - **1973** → Criado por Robert Metcalfe (Xerox PARC)  
@@ -338,16 +330,14 @@ flowchart LR
 
 ---
 
-## Aula 04
+## Aula 04 - Protocolos IP e ARP
 
-### Protocolos IP e ARP
-
-#### Protocolo IP
+### Protocolo IP
 - É um dos principais pilares do conjunto de protocolos TCP/IP que forma a base da comunicação na internet e em redes locais.
 - O **IPv4** é responsável por endereçar dispositivos em uma rede, permitindo que dados sejam enviados e recebidos entre eles, permitiu a expansão massiva da internet, criando um sistema estruturado de endereçamento que facilitou o crescimento das redes de computadores. A principal função do IPv4 é fornecer endereços únicos a cada dispositivo conectado à rede, permitindo que a comunicação ocorra de forma organizada e eficiente.
 
 
-#### Modelo TCP/IP
+### Modelo TCP/IP
 ```mermaid
 graph TD
     subgraph "Modelo TCP/IP"
@@ -372,7 +362,7 @@ graph TD
     style R fill:#f3e5f5
     style N fill:#e8f5e8
 ```
-#### Encapsulamento
+### Encapsulamento
 
 **Camada de Aplicação:**
 
@@ -412,10 +402,10 @@ graph TD
 
 - Transmite os bits através do meio físico (cabos, wireless)
 
-#### Desencapsulamento:
+### Desencapsulamento:
 No destino, o processo ocorre inversamente - cada camada remove seu cabeçalho específico e encaminha os dados para a camada superior, até que a mensagem original seja entregue à aplicação.
 
-#### Estrutura do Pacote IP
+### Estrutura do Pacote IP
 
 | Componente   | Tamanho    | Explicação                  |
 |--------------|------------|-----------------------------|
@@ -434,7 +424,7 @@ No destino, o processo ocorre inversamente - cada camada remove seu cabeçalho e
 | **Options** | Tamanho variável | Campo opcional usado para recursos adicionais com segurança, roteamento específico, entre outros |
 | **Padding** | Tamanho variável | Usado para garantir que o cabeçalho tenha um tamanho múltiplo de 32 bits|
 
-#### Endereçamento IP (w.x.y.z)
+### Endereçamento IP (w.x.y.z)
 
 | Classe de Endereçamento  | w | Net Id | Host Id | Nets | Hosts    |
 |--------------------------|-----|--------|---------|------|----------|
@@ -444,7 +434,7 @@ No destino, o processo ocorre inversamente - cada camada remove seu cabeçalho e
 
 *Endereço 127.x.x.x tem uso especial: loopback, localhost*
 
-#### Endereçamento IP: Classes
+### Endereçamento IP: Classes
 - O IPv4 utiliza endereços de 32 bits, normalmente representandos em notação decimal com quatro octetos (ex.: 192.168.0.1). Os endereços IPv4 são divididos em classes, cada uma com um propósito específico.
 
 | Classe  | Função                          | Faixa                   |
@@ -455,7 +445,7 @@ No destino, o processo ocorre inversamente - cada camada remove seu cabeçalho e
 | **D**   | Usada para multicast| 224.0.0.0 a 239.255.255.255  |
 | **E**   | Reservada para uso futuro ou experimental | 240.0.0.0 a 225.255.255.255|
 
-#### Endereços Públicos x Privados
+### Endereços Públicos x Privados
 - Endereços IP públicos: usados para identificar dispositivos acessíveis na internet global. Esses enderços são únicos e gerenciados por organizados como a IANA (Internet Assigned Numbers Authority) para garantir que não haja duplicidade.
 
 - Endereços IP privados: usados em redes internas e não são roteáveis na internet pública. As faixas reservadas para endereços privados são:
@@ -465,24 +455,24 @@ No destino, o processo ocorre inversamente - cada camada remove seu cabeçalho e
 
 - **APIPA (Automatic Private IP Addressing):** 169.254.0.0 a 169.254.255.255, usado quando um dispositivo não consegue obter um endereço IP dinâmico.
 
-#### Atribuição IP
+### Atribuição IP
 
 - **Estático:** O administrador da rede define manualmente o endereço IP de cada dispositivo, garantindo que este permaneça constante ao longo do tempo.
   
 - **Dinâmico**: Um servidor DHCP (Dynamic Host Configuration Protocol) atribui automaticamente os endereços IP aos dispositivos quando estes se conectam à rede.
 
-#### DHCP - Funcionamento
+### DHCP - Funcionamento
 
 - DHCP: simplifica a gestão de endereços IP em uma rede, permitindo que dispositivos sejam configurados automaticamenre com um endereço IP, máscara de sub-rede, gateway padrão, e servidores DNS.
 
-##### Processo DORA
+#### Processo DORA
 O processo de atribução de um endereço IP pelo DHCP, possui quatro etapas:
 - **1. Discovery:** Quando um dispositivo (cliente) se conecta à rede, ele envia um pacote DHCPDISCOVER em broadcast para localizar servidores DHCP disponíveis.
 - **2. Offer:** Os servidores DHCP que recebem o pedido respondem com um pacote DHCPOFFER, oferecendo um endereço IP ao cliente, junto com outros parâmetros de rede.
 - **3.Request**: O cliente escolhe uma das ofertas recebidas e responde com um DHCPREQUEST, indicando que aceita o endereço IP oferecido.
 - **4. Acknowledge:** Finalmente, o servidor DHCP responde com um DHCPACK, confirmando que o cliente pode usar o endereço IP e fornecendo os parâmetros adicionais, como a duração do lease (tempo de validade do endereço).
 
-##### Pool de Endereços e Reservas por MAC
+#### Pool de Endereços e Reservas por MAC
 
 - **Pool de Endereços**: O DHCP possui uma faixa de endereços IP configurada, conhecida como pool, que ele pode atribuir dinamicamente aos dispositivos. O pool define o intervalo de endereços disponíveis para is clientes.
 -  **Reservas por MAC**: Para dispositivos que precisam de um endereço IP fixo, mas sem configurar manualmente, o administrar pode configurar uma reserva por MAC address. Isso significa que sempre que o dispositivo com aquele MAC específico solicitar um IP, o servidor DHCP atribuirá o mesmo endereço IP pré-determinado.
@@ -504,9 +494,89 @@ O processo de atribução de um endereço IP pelo DHCP, possui quatro etapas:
 | 8  | Target Hardware Address (THA)| 6 bytes | Endereço MAC de destino. No Request fica vazio. No Reply é preenchido.     |
 | 9  | Target Protocol Address (TPA)| 4 bytes | Endereço IP do destino. Ex: `192.168.0.20`.                                |
 
-##### ARP - Funcionamento
+### ARP - Funcionamento
 
 - **1. Solicitação ARP (ARP Request):** Quando um dispositivo deseja enviar em pacote a outro dispositivo em uma rede local, ele primeiro verifica se já conhece o endereço MAC correspondente ao endereço IP de destino. Caso não conheça, ele envia uma solicitaçãp ARP (broadcast) para todos dispositivos na rede, perguntando: "Quem tem o endereço IP X?"
 - **2. Resposta ARP (ARP Reply):** O dispositivo que possui o endereço IP correspondente responde com uma mensagem contendo o seu endereço MAC. Essa resposta é envidada diretamente ao solicitante.
 - **3. Cache ARP:** O dispositivo solicitante armazena a correspondência entre o endereço IP e o endereço MAC em uma tabela chamada chache ARP. Isso evita a necessida de enviar solicitações ARP repetidas para o mesmo endereço IP, acelerando as comunicações futuras.
+
+## Aula 05 - Máscara de Rede e CIDR
+
+### IP + Máscara de Rede
+
+- A máscara de rede é um número de 32 bits usado em conjunto com o endereço IP.
+- Define quais bits do endereço IP representam a rede e quais representam os hosts dentro dessa rede. Ela é composta de uma sequência continua de bits **1**, seguida por uma sequência contínua de bits **0**.
+- **Rede**: Os bits 1 da máscara de rede representam a parte de endereço IP que identifica a rede.
+- **Host**: Os bits 0 da máscaa de rede representam a parte do endereço IP que identifica os hosts dentro da rede.
+
+### Máscara - Exemplo
+- A máscara de rede 255.255.255.0, em binário, é 11111111.11111111.11111111.00000000.
+- Isso indica que os primeiros 24 bits do endereço IP pertencem à rede e os 8 bits restantes são para os hosts.
+
+| Endereço IP | Máscara de Rede |  Rede   | Host           |
+|---------|-------------------|--------------|-------------|
+| 192.168.1.10 | 255.255.255.0| 192.168.1.x| 10|
+
+### Máscaea Padrão
+
+| Classe | Máscara de Rede |  Rede   | Host           |
+|---------|-------------------|--------------|-------------|
+|**A** | 255.0.0.0| 8 bits | 24 bits |
+|**B** | 255.255.0.0| 16 bits | 16 bits |
+|**C** | 255.255.255.0| 24 bits | 8 bits |
+
+### CIDR (Classless Inter-Domain Routing)
+
+- O CIDR é uma metodologia criada para substituir o sistema de classes e permitir um uso mais flexível e eficiente dos endereços IP. Em vez de máscaras fixas, o CIDR usa um sufixo que indica o número de bits "1" na máscara de rede. Por exemplo, /24 no endereço 192.168.1.0/24 significa que os primeiros 24 bits são da rede. O CIDR possibilita a criação de sub-redes de tamanhos personalizados, o que é útil para dividir grandes redes em subgrupos.
+
+### Cálculo de Sub-redes
+A máscara de rede determina como uma rede é dividida em sub-redes e quantos hosts podem ser suportados em cada uma. Para uma máscara de rede /26, por exemplo:
+- Bits para Rede: 26 
+- Bits para Hosts: 6 
+- Número de Sub-redes: 2^(26-24) = 4 
+- Número de Hosts por Sub-rede: 2^6 - 2 = 62
+
+### Endereço de Rede
+
+*Usar octeto para transformar em binário*
+
+| 128 | 64 | 32 | 16| 8| 4| 2| 1 |
+|-----|----|----|---|---|--|--|---|
+
+Aqui estão as tabelas corrigidas em **Markdown** para ficarem bem formatadas:
+
+##### Host 1
+
+| Descrição            | Binário (32 bits)                   | Decimal       |
+| -------------------- | ----------------------------------- | ------------- |
+| **Endereço IP**      | 11000000.10101000.00000001.00001010 | 192.168.1.10  |
+| **Máscara de Rede**  | 11111111.11111111.11111111.00000000 | 255.255.255.0 |
+| **Endereço de Rede** | 11000000.10101000.00000001.00000000 | 192.168.1.0   |
+
+---
+
+##### Host 2
+
+| Descrição            | Binário (32 bits)                   | Decimal       |
+| -------------------- | ----------------------------------- | ------------- |
+| **Endereço IP**      | 11000000.10101000.00000001.00101111 | 192.168.1.47  |
+| **Máscara de Rede**  | 11111111.11111111.11111111.00000000 | 255.255.255.0 |
+| **Endereço de Rede** | 11000000.10101000.00000001.00000000 | 192.168.1.0   |
+
+### Cálculo da Máscara de Rede
+
+- Criar duas subredes
+- **IP**: 192.203.97.0/24
+
+| Subnet | 1 | *2* | 4 | 8 | 16 | 32 | 64 | 128 |  256   |
+| -------|---|---|---|---|----|----|----|---- | -------|
+| **Host**  | 256| **128** | 64 | 32 | 16 | 8 | 4 | 2 |  1 |
+| **Subnet mask**  | /24 | **/25** | /26 | /27 | /28| /29 | /30 | /31 | /32 |
+
+| Network ID | Máscara de subrede | Host IDs | Host disponíveis| Broadcast    |
+| ---------|-------|---|------|----------------------|
+| 192.203.97.0  | /25| 1-124 | 124 |  192.203.97.127 |
+| 192.203.97.128 | /25 | 129-254 | 124 | 192.203.97.255|
+
+
 

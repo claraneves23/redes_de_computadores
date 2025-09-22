@@ -4,7 +4,9 @@ Disciplina ministrada pelo professor Claudio Souza Nunes
 
 Lattes: http://lattes.cnpq.br/7682775885207598
 
-## Aula 01 - Importância das Redes de Computadores
+## Aula 01 - Introdução, Classificação, Modelo de Referência ISO x OSI
+
+### Importância das Redes de Computadores
 
 - Comunição entre pessoas
 - Compartilhar recursos e troca de informações

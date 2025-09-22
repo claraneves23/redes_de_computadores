@@ -150,7 +150,7 @@ graph TD
 
 
 #### Conectores
-- RJ-45: Padrão em todos as categorias de UTP, compatível com a maioria sas aplicações de rede.
+- RJ-45: Padrão em todas as categorias de UTP, compatível com a maioria sas aplicações de rede.
 - GG45 e TERA: Usados em categorias superiores, como Cat7 e Cat8, para suportar maiores frequências e velocidades.
 
   

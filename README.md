@@ -355,8 +355,6 @@ flowchart LR
 
 #### Sinalização
 
-# Sinalização
-
 | Método de Sinalização                           | Descrição                                                                                                                                   | Tipo de Ethernet                              | Velocidade        | Comentários                                                                                                                                                       |
 |-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Codificação Manchester**                      | Cada bit de dados é representado por uma transição no meio do intervalo de bit. Proporciona sincronização, pois cada bit garante uma transição de sinal. | 10BASE-T, 10BASE5, 10BASE2                    | 10 Mbps          | Utilizado nas primeiras versões de Ethernet, onde a simplicidade era a prioridade. Introduz overhead de 100% (1 bit de controle para cada bit de dados).          |

@@ -327,6 +327,14 @@ flowchart LR
 
 ---
 
+#### Tipos de Switches 
+- **Store-and-forward**: Lê todo o pacote, armazena em buffer, testa integridade e envia se ok.
+- **Cut-through**: Verifica endereços e envia (sem verificação de integridade).
+
+#### Tipos de Ligação
+- **Cascateamento:** São usados portas "normais" do switch conectadas através de um cabo *cross over*
+- **Empilhamento:** Os equipamentos são ligados usando portas criadas especialmente para este fim.
+
 #### 🚀 Evolução das Velocidades Ethernet
 | Padrão       | Velocidade | Cabo                     |
 |--------------|------------|--------------------------|
@@ -335,7 +343,7 @@ flowchart LR
 | **1000BASE-T** | 1 Gbps   | Par trançado Cat 5e ou + |
 | **10GBASE-T** | 10 Gbps   | Par trançado Cat 6a ou + |
 
----
+----
 
 #### ✅ Vantagens do Ethernet
 - Fácil implementação e configuração  
@@ -344,6 +352,14 @@ flowchart LR
 - Evolução contínua para **altas velocidades**  
 
 ---
+
+# Sinalização
+
+| Método de Sinalização                           | Descrição                                                                                                                                   | Tipo de Ethernet                              | Velocidade        | Comentários                                                                                                                                                       |
+|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Codificação Manchester**                      | Cada bit de dados é representado por uma transição no meio do intervalo de bit. Proporciona sincronização, pois cada bit garante uma transição de sinal. | 10BASE-T, 10BASE5, 10BASE2                    | 10 Mbps          | Utilizado nas primeiras versões de Ethernet, onde a simplicidade era a prioridade. Introduz overhead de 100% (1 bit de controle para cada bit de dados).          |
+| **Codificação 4B/5B**
+
 
 ## Aula 04 - Protocolos IP e ARP
 

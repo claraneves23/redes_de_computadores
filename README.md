@@ -252,19 +252,32 @@ graph TD
 
 #### ⚙️ Funcionamento Básico
 - Atua na **Camada 2 do Modelo OSI**  
-- Identificação por **endereços MAC**  
+- Identificação por **endereços MAC**
+- **Quadros de Ethernet:**
+-  Preamble, Destino MAC, Origem MAC, Tipo/Length, Dados, FCS.
 - Tipos de transmissão:  
   - **Half-duplex** → um de cada vez  
   - **Full-duplex** → transmissão bidirecional simultânea  
 
 ---
+#### MAC (Media Acess Control Address)
+
+| 00 | 1A | 3F | F1 | 4C | 2C|
+|-----|----|----|---|---|--|
+Organization Unique Identifier + Network Interface Controller Specific 
+
+#### Unicast, Broadcast e Multicast
+
+| Unicast | Broadcast | Multicast |
+|----------|--------------------|-----------------------|
+| Um único dispositico da rede   | Todos os dispositivos na rede | Um grupo de dispositivos na mesma rede
 
 #### 🔄 CSMA/CD (Protocolo de Acesso ao Meio)
 - **Carrier Sense** → verifica se o meio está livre  
 - **Multiple Access** → vários dispositivos compartilham o meio  
 - **Collision Detection** → detecta colisões e retransmite  
 
-> 🚫 Em redes modernas não é mais necessário, pois os **switches** eliminam colisões.
+> 🚫 Em redes modernas não é mais necessário, pois os **switches** eliminam colisões. 
 
 ---
 

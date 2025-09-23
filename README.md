@@ -554,7 +554,7 @@ O processo de atribução de um endereço IP pelo DHCP, possui quatro etapas:
 |---------|-------------------|--------------|-------------|
 | 192.168.1.10 | 255.255.255.0| 192.168.1.x| 10|
 
-### Máscaea Padrão
+### Máscara Padrão
 
 | Classe | Máscara de Rede |  Rede   | Host           |
 |---------|-------------------|--------------|-------------|

@@ -580,7 +580,6 @@ A máscara de rede determina como uma rede é dividida em sub-redes e quantos ho
 | 128 | 64 | 32 | 16| 8| 4| 2| 1 |
 |-----|----|----|---|---|--|--|---|
 
-Aqui estão as tabelas corrigidas em **Markdown** para ficarem bem formatadas:
 
 ##### Host 1
 

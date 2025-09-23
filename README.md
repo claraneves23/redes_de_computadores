@@ -500,7 +500,7 @@ No destino, o processo ocorre inversamente - cada camada remove seu cabeçalho e
 
 ### DHCP - Funcionamento
 
-- DHCP: simplifica a gestão de endereços IP em uma rede, permitindo que dispositivos sejam configurados automaticamenre com um endereço IP, máscara de sub-rede, gateway padrão, e servidores DNS.
+- DHCP: simplifica a gestão de endereços IP em uma rede, permitindo que dispositivos sejam configurados automaticamente com um endereço IP, máscara de sub-rede, gateway padrão, e servidores DNS.
 
 #### Processo DORA
 O processo de atribução de um endereço IP pelo DHCP, possui quatro etapas:

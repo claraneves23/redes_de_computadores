@@ -262,9 +262,16 @@ graph TD
 ---
 #### MAC (Media Acess Control Address)
 
-| 00 | 1A | 3F | F1 | 4C | 2C|
-|-----|----|----|---|---|--|
-Organization Unique Identifier + Network Interface Controller Specific 
+```mermaid 
+graph TD
+    A[Endereço MAC: 00-1A-3F-F1-4C-2C] 
+    A --> B[Bytes 1-3: 00-1A-3F]
+    A --> C[Bytes 4-6: F1-4C-2C]
+    B --> D[OUI - Organizationally Unique Identifier]
+    C --> E[NIC Specific - Número de série]
+    D --> F[Identifica o fabricante]
+    E --> G[Identifica o dispositivo individual]
+```
 
 #### Unicast, Broadcast e Multicast
 

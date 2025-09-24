@@ -83,7 +83,7 @@ graph TD
 ### Classificação dos Meios Físicos de Transmissão
 
 #### Elétricos
-- Trasmitem sinais na forma de pulsos elétricos
+- Transmitem sinais na forma de pulsos elétricos
 - Sujeitos a interferências eletromagnéticas, mas são amplamente utilizados devido ao seu custo acessível e à facilidade de instalação
 - ex: Cabo coaxical e o cabo par trançado
 

@@ -78,7 +78,7 @@ graph TD
 ## Aula 02 - Meios físicos de Transmissão - Conectividade Elétrica e Ótica
 
 ### Definição
-- Constituem a base da camada física do modelo ISO/OSI, são responsável pela transmissão de sinais elétricos ou ópticos que transportam os dados brutos entre os dispositivos conectados à rede. A escolha do meio físico adequado influencia diretamente a qualidade da comunicação, a velocidade de transmissão e a confiabilidade da rede.
+- Constituem a base da camada física do modelo ISO/OSI, são responsáveis pela transmissão de sinais elétricos ou ópticos que transportam os dados brutos entre os dispositivos conectados à rede. A escolha do meio físico adequado influencia diretamente a qualidade da comunicação, a velocidade de transmissão e a confiabilidade da rede.
 
 ### Classificação dos Meios Físicos de Transmissão
 

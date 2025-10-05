@@ -621,5 +621,74 @@ A máscara de rede determina como uma rede é dividida em sub-redes e quantos ho
 | 192.203.97.0  | /25| 1-124 | 124 |  192.203.97.127 |
 | 192.203.97.128 | /25 | 129-254 | 124 | 192.203.97.255|
 
+## Aula 06 - Domain Name System (DNS)
 
+### Introdução ao DNS
+- **Problema:** Endereços IP (ex: `192.168.125.1`) são difíceis de memorizar
+- **Solução:** DNS traduz nomes de domínio (ex: `www.exemplo.com`) em endereços IP
+- **Função:** Sistema hierárquico e distribuído para resolução de nomes
 
+### Histórico
+- **Pré-DNS:** Uso do arquivo `HOSTS.TXT` (centralizado e insustentável)
+- **1983:** Criação do DNS por Paul Mockapetris para escalabilidade
+
+### Estrutura Hierárquica
+| Nível | Descrição | Exemplo |
+|-------|------------|---------|
+| Raiz | 13 servidores (A-M), ponto inicial | `a.root-servers.net` |
+| TLD | Top-Level Domains | `.com`, `.br`, `.edu` |
+| Segundo Nível | Domínios registrados | `exemplo.com` |
+| Subdomínios | Divisões adicionais | `www.exemplo.com` |
+
+### Tipos de TLDs
+- **gTLDs:** Genéricos (`.com`, `.net`, `.org`)
+- **sTLDs:** Patrocinados (`.gov`, `.edu`, `.mil`)  
+- **ccTLDs:** Código de país (`.br`, `.jp`, `.tv`)
+- **Especial:** `.onion` (deep web, via rede Tor)
+
+### Processo de Resolução DNS
+1. Usuário digita domínio no navegador
+2. Resolver local verifica cache
+3. Consulta servidor raiz → TLD → Autoritativo
+4. Retorna IP para o navegador
+5. Armazena em cache
+
+### Tipos de Solicitação
+- **Recursiva:** Resolver assume toda responsabilidade
+- **Iterativa:** Servidor aponta para próximo servidor
+- **Reversa:** IP → Nome (usando registro PTR)
+
+### Componentes do DNS
+| Tipo | Função | Exemplo |
+|------|--------|---------|
+| Autoritativo | Mantém registros oficiais | Servidor do domínio |
+| Recursivo | Resolve consultas para clientes | `8.8.8.8` (Google) |
+| Raiz | Direciona para TLDs | `a.root-servers.net` |
+| TLD | Mantém informações do TLD | Servidores `.com` |
+
+### Registros DNS Principais
+| Tipo | Função |
+|------|--------|
+| A | Nome → IPv4 |
+| AAAA | Nome → IPv6 |
+| CNAME | Alias para outro nome |
+| MX | Servidor de email |
+| NS | Servidores autoritativos |
+| PTR | IP → Nome (reverso) |
+| SOA | Informações da zona |
+| TXT | Texto (autenticação) |
+
+### Segurança e Ataques
+- **Envenenamento de Cache:** Respostas DNS falsas no cache
+- **DDoS:** Sobrecarga de servidores com tráfego
+- **DNS Hijacking:** Redirecionamento para servidores maliciosos
+
+### Conceitos Importantes
+- **AnyCast:** Roteamento para servidor mais próximo
+- **Redundância:** Servidores primário/secundário + transferência de zona
+- **Registro de Domínio:** Processo de aquisição de nomes únicos
+
+### Curiosidades
+- 13 servidores raiz por limitação do UDP (512 bytes/pacote)
+- AnyCast melhora latência e disponibilidade
+- Verisign opera dois servidores raiz (A e J)
